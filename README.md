@@ -12,7 +12,6 @@ field.
 
 Define our model that uses the behavior included.
 
-    [php]
     class LocalizableUnit extends Doctrine_Record
     {
         public function setTableDefinition()
@@ -33,7 +32,6 @@ This essentially creates a field on your model, and specifies the unit of measur
 to save to the database.  This is important for precision reasons.
 Now we can use it like the following.
     
-    [php]
     $unit = new LocatableUnit();
     $article->name      = "Testing this out";
     $article->length    = 15;  // sets unit to 15 KM
@@ -61,7 +59,6 @@ Now that article would output the following.
 As many fields can act as localizable as you need.  You can also pass a conversion array in your declaration to add
 unsupported conversions
 
-    [php]
     class LocalizableUnit extends Doctrine_Record
     {
         public function setTableDefinition()
@@ -91,8 +88,7 @@ The conversion array passed to the behavior supports conversion from miles and k
 
 You can also use the `LocalizableConverter` object to perform conversions outside of the extension
 
-    [php]
-    $converter = new LocalizableConverter($additional_conversions);
+    $converter = new LocalizableConverter();
     $celcius = $converter->convert($fahrenheit, 'F', 'C');
     $gallons = $liters * $converter->getConversion('L', 'GAL');
     
